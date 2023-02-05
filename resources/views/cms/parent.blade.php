@@ -323,31 +323,7 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
-                Viewer
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('viewers.index') }}" class="nav-link">
-                  <i class="fas fa-list nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('viewers.create') }}" class="nav-link">
-                  <i class="fas fa-plus-square nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
+        
           <li class="nav-header">CONTENT MANGMENT</li>
 
           <li class="nav-item">

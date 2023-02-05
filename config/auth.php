@@ -64,6 +64,15 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'author' => [
+            'driver' => 'session',
+            'provider' => 'authors',
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -92,6 +101,15 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
+        ],
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class,
+        ],
+
+        'authors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Author::class,
         ],
     ],
 
