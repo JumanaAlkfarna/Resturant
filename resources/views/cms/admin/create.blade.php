@@ -25,6 +25,18 @@
             <div class="card-body">
                 <div class="row">
                     <div class="form-group col-md-6">
+                      <label>Roles Name</label>
+                      <select class="form-control select2" id="role_id" name="role_id" style="width: 100%;">
+                        {{-- <option selected="selected">Alabama</option> --}}
+                      @foreach($roles as $role)
+                        <option value="{{ $role->id }}">{{ $role->name }}</option>
+                      @endforeach
+                      </select>
+                    </div>
+                  </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
                         <label for="first_name">Admin First Name</label>
                         <input type="text" class="form-control" id="first_name" name="first_name"
                             placeholder="Enter Admin First Name">
@@ -61,7 +73,7 @@
                     </div>
                 </div>
 
-               
+
 
                 <div class="row">
                     <div class="form-group col-md-6">
@@ -106,6 +118,8 @@
     formData.append('address',document.getElementById('address').value);
     formData.append('DOB',document.getElementById('DOB').value);
     formData.append('image',document.getElementById('image').files[0]);
+    formData.append('role_id',document.getElementById('role_id').value);
+
     store('/cms/admin/admins' , formData)
   }
 

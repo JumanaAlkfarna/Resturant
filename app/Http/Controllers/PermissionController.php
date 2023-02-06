@@ -77,7 +77,7 @@ class PermissionController extends Controller
     public function edit($id)
     {
         $permissions = Permission::findOrFail($id);
-        return response()->view('cms.spaite.permissions.edit' , compact('permissions'));
+        return response()->view('cms.spatie.permission.edit' , compact('permissions'));
     }
 
     /**
@@ -91,7 +91,7 @@ class PermissionController extends Controller
     {
         $validator = Validator($request->all(),
         [
-            
+
         ]);
 
         if(! $validator->fails()){

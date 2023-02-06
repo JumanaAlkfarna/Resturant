@@ -45,7 +45,7 @@
               <!-- /.card-body -->
 
               <div class="card-footer">
-                <button type="button" onclick="performUpdate({{ $permissions->id }})" class="btn btn-primary">Store</button>
+                <button type="button" onclick="performUpdate({{ $permissions->id }})" class="btn btn-primary">Update</button>
                 <a href="{{ route('permissions.index') }}" type="button" class="btn btn-info">Return Back</a>
 
               </div>

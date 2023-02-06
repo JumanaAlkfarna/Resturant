@@ -300,8 +300,8 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
+                <i class="nav-icon fas fa-user"></i>
+                <p>
                 Author
                 <i class="fas fa-angle-left right"></i>
               </p>
@@ -323,58 +323,11 @@
             </ul>
           </li>
 
-        
+
           <li class="nav-header">CONTENT MANGMENT</li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
-                Country
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('countries.index') }}" class="nav-link">
-                  <i class="fas fa-list nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('countries.create') }}" class="nav-link">
-                  <i class="fas fa-plus-square nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
 
-            </ul>
-          </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
-                City
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('cities.index') }}" class="nav-link">
-                  <i class="fas fa-list nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('cities.create') }}" class="nav-link">
-                  <i class="fas fa-plus-square nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
 
 
 
@@ -430,31 +383,7 @@
             </ul>
           </li>
 
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-flag"></i>
-              <p>
-                Author_Category
-                <i class="fas fa-angle-left right"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('author_categories.index') }}" class="nav-link">
-                  <i class="fas fa-list nav-icon"></i>
-                  <p>Index</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('author_categories.create') }}" class="nav-link">
-                  <i class="fas fa-plus-square nav-icon"></i>
-                  <p>Create</p>
-                </a>
-              </li>
-
-            </ul>
-          </li>
-
+        
 
           <li class="nav-header">SETTING</li>
 

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class AdminController extends Controller
 {
@@ -27,7 +29,8 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return response()->view('cms.admin.create');
+        $roles = Role::where('guard_name' , 'admin')->get();
+        return response()->view('cms.admin.create' , 'roles');
 
     }
 
@@ -50,6 +53,9 @@ class AdminController extends Controller
             $isSaved = $admins->save();
             if($isSaved){
                 $users = new User();
+                $roles = Role::findOrFail($request->get('role_id'));
+                $admins->assignRole($roles->name);
+
                 if (request()->hasFile('image')) {
 
                     $image = $request->file('image');
@@ -97,7 +103,10 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        //
+        $admins = Admin::findOrFail($id);
+        // $roles = Role::where('guard_name' , 'admin')->get();
+
+        return response()->view('cms.admin.edit' , compact('admins' ));
     }
 
     /**
@@ -109,7 +118,45 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validator = Validator($request->all() , [
+            'password' => 'nullable',
+        ]);
+
+        if(! $validator->fails()){
+            $admins = Admin::findOrFail($id);
+            $admins->email = $request->get('email');
+            $isUpdated = $admins->save();
+            if($isUpdated){
+                $users = $admins->user;
+                // $roles = Role::findOrFail($request->get('role_id'));
+                // $admins->assignRole($roles->name);
+
+                if (request()->hasFile('image')) {
+
+                    $image = $request->file('image');
+
+                    $imageName = time() . 'image.' . $image->getClientOriginalExtension();
+
+                    $image->move('storage/images/admin', $imageName);
+
+                    $users->image = $imageName;
+                    }
+                    $users->first_name = $request->get('first_name');
+                    $users->last_name = $request->get('last_name');
+                    $users->mobile = $request->get('mobile');
+                    $users->address = $request->get('address');
+                    $users->DOB = $request->get('DOB');
+                    $users->actor()->associate($admins);
+
+                $isUpdated = $users->save();
+
+                return ['redirect'=>route('admins.index')];
+
+            }
+        }
+        else{
+            return response()->json(['icon' => 'error' , 'title' => $validator->getMessageBag()->first()] ,400);
+        }
     }
 
     /**
@@ -120,6 +167,6 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $admins = Admin::destroy($id);
     }
 }
